@@ -1,0 +1,7 @@
+# White Material
+newmtl white
+Kd 1.0 1.0 1.0  # Диффузный цвет (белый)
+
+# Black Material
+newmtl black
+Kd 0.0 0.0 0.0  # Диффузный цвет (черный)

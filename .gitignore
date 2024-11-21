@@ -1,2 +1,5 @@
 venv/
 .idea/
+input.png
+output.obj
+output.stl
