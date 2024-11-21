@@ -4,19 +4,19 @@ from stl import mesh
 import timeit
 
 
-def png_qr_to_slt(input_image_path, depth, floor) -> None:
+def png_qr_to_slt(png_file, depth) -> None:
     """
     Преобразует чёрно-белое изображение в 3D объект на платформе в формате .stl.
     Объект формируется из чёрных пикселей.
 
     png_file - путь к входному файлу
-    output_obj_path - путь к выходному файлу
     depth - высота объекта и платформы
+
     """
 
     # Загрузите изображение QR-кода в 2D формате
     try:
-        img = Image.open(input_image_path).convert('L')  # конвертируем в черно-белый формат
+        img = Image.open(png_file).convert('L')  # конвертируем в черно-белый формат
     except:
         print('Невозможно открыть изображение')
 
@@ -25,6 +25,7 @@ def png_qr_to_slt(input_image_path, depth, floor) -> None:
 
     # Создайте массив для хранения треугольников
     faces = []
+    floor = depth
 
     # Итерируемся по пикселям изображения
     for x in range(width):
@@ -99,8 +100,8 @@ def png_qr_to_slt(input_image_path, depth, floor) -> None:
         print(f".stl файл создан")
 
 
-input_image_path = 'input.png'
+png_file = 'input.png'
 
-exec_time = timeit.timeit(lambda: png_qr_to_slt(input_image_path, 10, 10), number=1)
+exec_time = timeit.timeit(lambda: png_qr_to_slt(png_file, 10), number=1)
 print(f"Время выполнения: {exec_time:.10f} секунд")
 
